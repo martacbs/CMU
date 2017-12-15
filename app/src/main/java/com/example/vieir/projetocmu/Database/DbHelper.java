@@ -1,6 +1,7 @@
 package com.example.vieir.projetocmu.Database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -28,6 +29,9 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void verificarUser(SQLiteDatabase db){
+        String sql="SELECT *FROM user WHERE usename=? AND password=?";
+        Cursor c = db.rawQuery(sql,null);
 
-
+    }
 }

@@ -54,7 +54,19 @@ public class userRegister extends AppCompatActivity {
         registar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(password.getText().toString().equals(confirmarPassword.getText().toString())) {
+            if(name.length()==0 ){
+                Toast.makeText(userRegister.this, "Insira o seu nome", Toast.LENGTH_LONG).show();
+            }else if(email.length()==0){
+                Toast.makeText(userRegister.this, "Insira o seu e-mail", Toast.LENGTH_LONG).show();
+            }else if(localidade.length()==0){
+                Toast.makeText(userRegister.this, "Insira a localidade", Toast.LENGTH_LONG).show();
+            }else if(username.length()==0){
+                Toast.makeText(userRegister.this, "Insira um username", Toast.LENGTH_LONG).show();
+            }else if(password.length()==0){
+                Toast.makeText(userRegister.this, "Insira uma password", Toast.LENGTH_LONG).show();
+            }else if(confirmarPassword.length()==0){
+                Toast.makeText(userRegister.this, "Tem que confirmar a password", Toast.LENGTH_LONG).show();
+            }else if(password.getText().toString().equals(confirmarPassword.getText().toString())) {
                     try {
                         insertUser();
                         Toast.makeText(userRegister.this, "Adicionado com sucesso", Toast.LENGTH_LONG).show();
@@ -63,7 +75,7 @@ public class userRegister extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }else{
-                    Toast.makeText(userRegister.this, "ERROR", Toast.LENGTH_LONG).show();
+                    Toast.makeText(userRegister.this, "As passwords que introduziu não são iguais", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -72,8 +84,8 @@ public class userRegister extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(c, login.class);
-                startActivity(i);
+                Intent x= new Intent(getApplicationContext(),login.class);
+                startActivity(x);
             }
         });
 

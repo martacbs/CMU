@@ -1,5 +1,6 @@
 package com.example.vieir.projetocmu.Register;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,40 +27,45 @@ public class login extends AppCompatActivity {
         login = (Button) findViewById(R.id.buttonLogin);
         user = (EditText) findViewById(R.id.insertUser);
         pass = (EditText) findViewById(R.id.insertPass);
-
-
-
+        
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ContentValues values = new ContentValues();
+                values.put("username", user.getText().toString());
+                values.put("password", pass.getText().toString());
 
-                Intent d=new Intent(getApplicationContext(),userInterests.class);
-                startActivity(d);
+                verificarUser();
+
             }
         });
 
     }
 
-    /*
-        private void verificarUser(){
+        private void verificarUser() {
 
-                DbHelper dbHelper = new DbHelper(login.this);
-                SQLiteDatabase db = dbHelper.getReadableDatabase();
-                String sql="SELECT *FROM user WHERE usename=? AND password=?";
-                Cursor c = db.rawQuery(sql,null);
-                String username= user.getText().toString();
-                String password=pass.getText().toString();
+            DbHelper dbHelper = new DbHelper(login.this);
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            String username = user.getText().toString();
+            String password = pass.getText().toString();
+            String sql = "SELECT * FROM user WHERE usename=? AND password=?";
+            try {
 
-                if(c!=null){
-                    if(c.getCount()>0){
+                Cursor c = db.rawQuery(sql, null);
+
+                if (c != null) {
+                    if (c.getCount() > 0) {
                         c.moveToNext();
                         Toast.makeText(getApplicationContext(), "login sucessful", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getApplicationContext(), "login error", Toast.LENGTH_SHORT).show();
+                        Intent d=new Intent(getApplicationContext(),userInterests.class);
+                        startActivity(d);
                     }
-                }
-            }*/
+                    }
 
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "NAO DA", Toast.LENGTH_SHORT).show();
+            }
 
+        }
 
 }

@@ -34,7 +34,6 @@ public class login extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put("username", user.getText().toString());
                 values.put("password", pass.getText().toString());
-
                 verificarUser();
 
             }
@@ -43,17 +42,14 @@ public class login extends AppCompatActivity {
     }
 
         private void verificarUser() {
-
             DbHelper dbHelper = new DbHelper(login.this);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             String username = user.getText().toString();
             String password = pass.getText().toString();
-            String sql = "SELECT * FROM user WHERE usename=? AND password=?";
-            try {
-
-                Cursor c = db.rawQuery(sql, null);
-
-                if (c != null) {
+            String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+             try {
+                 Cursor c = db.rawQuery(sql, null);
+                 if (c != null) {
                     if (c.getCount() > 0) {
                         c.moveToNext();
                         Toast.makeText(getApplicationContext(), "login sucessful", Toast.LENGTH_SHORT).show();
@@ -61,11 +57,8 @@ public class login extends AppCompatActivity {
                         startActivity(d);
                     }
                     }
-
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "NAO DA", Toast.LENGTH_SHORT).show();
             }
-
         }
-
 }

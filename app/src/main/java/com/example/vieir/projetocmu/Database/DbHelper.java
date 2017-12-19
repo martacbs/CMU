@@ -29,9 +29,5 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void verificarUser(SQLiteDatabase db){
-        String sql="SELECT *FROM user WHERE usename=? AND password=?";
-        Cursor c = db.rawQuery(sql,null);
 
-    }
 }

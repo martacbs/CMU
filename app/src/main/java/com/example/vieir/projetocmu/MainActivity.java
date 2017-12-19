@@ -13,7 +13,7 @@ import com.example.vieir.projetocmu.Register.userRegister;
 public class MainActivity extends AppCompatActivity {
 
     Button register,login;
-    Context c;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

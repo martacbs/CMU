@@ -70,6 +70,8 @@ public class userRegister extends AppCompatActivity {
                     try {
                         insertUser();
                         Toast.makeText(userRegister.this, "Adicionado com sucesso", Toast.LENGTH_LONG).show();
+                        Intent x= new Intent(getApplicationContext(),login.class);
+                        startActivity(x);
 
                     } catch (Exception e) {
                         e.printStackTrace();

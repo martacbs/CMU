@@ -71,6 +71,12 @@ public class userRegister extends AppCompatActivity {
                 if (name.length() == 0) {
                     Toast.makeText(userRegister.this, "Insira o seu nome", Toast.LENGTH_LONG).show();
                 } else if (email.length() == 0) {
+                    try{
+                        
+                    }catch(Exception e){
+                        Toast.makeText(userRegister.this, "Email invalido", Toast.LENGTH_LONG).show();
+                    }
+
                     Toast.makeText(userRegister.this, "Insira o seu e-mail", Toast.LENGTH_LONG).show();
                 } else if (localidade.length() == 0) {
                     Toast.makeText(userRegister.this, "Insira a localidade", Toast.LENGTH_LONG).show();
@@ -122,8 +128,8 @@ public class userRegister extends AppCompatActivity {
         User utilizador = null;
 
         try {
-            boolean condicao1=false;
-            boolean condicao2=false;
+            boolean condicao1;
+            boolean condicao2;
                 if (c1 != null && c1.moveToFirst()) {
 
                     utilizador = new User();
@@ -143,7 +149,6 @@ public class userRegister extends AppCompatActivity {
                 }
                 if(condicao1==true && condicao2==true){
                 insertUser();
-
                 }
 
         } catch (Exception e) {

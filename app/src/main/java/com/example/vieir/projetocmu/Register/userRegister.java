@@ -3,6 +3,7 @@ package com.example.vieir.projetocmu.Register;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.vieir.projetocmu.Database.DbHelper;
+import com.example.vieir.projetocmu.Models.User;
 import com.example.vieir.projetocmu.R;
 
 public class userRegister extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class userRegister extends AppCompatActivity {
     Button registar,login;
     Context c;
     private void insertUser() throws Exception{
+
         DbHelper dbHelper = new DbHelper(userRegister.this);
         SQLiteDatabase db= dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -29,6 +32,7 @@ public class userRegister extends AppCompatActivity {
         values.put("username", username.getText().toString());
         values.put("password", password.getText().toString());
         values.put("confirmarPassword", confirmarPassword.getText().toString());
+
         long rowId = db.insert("user", null, values);
         if (rowId < 0) {
             throw new Exception("Erro aqui");
@@ -51,9 +55,17 @@ public class userRegister extends AppCompatActivity {
         registar = (Button)findViewById(R.id.button_salvarPessoa);
         login =(Button)findViewById(R.id.button_Login);
 
+
         registar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                DbHelper dbHelper = new DbHelper(userRegister.this);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                String query = "SELECT * FROM user WHERE email=? AND username=?  ";
+                Cursor c = db.rawQuery(query, new String[]{email,username});
+
             if(name.length()==0 ){
                 Toast.makeText(userRegister.this, "Insira o seu nome", Toast.LENGTH_LONG).show();
             }else if(email.length()==0){
@@ -67,20 +79,26 @@ public class userRegister extends AppCompatActivity {
             }else if(confirmarPassword.length()==0){
                 Toast.makeText(userRegister.this, "Tem que confirmar a password", Toast.LENGTH_LONG).show();
             }else if(password.getText().toString().equals(confirmarPassword.getText().toString())) {
-                    try {
+
+                User user = null;
+                try {
+                    if (c != null && c.moveToFirst()) {
+
+                        user = new User();
+                        user.setEmail(c.getString(2));
+                        user.setUsername(c.getString(5));
+
                         insertUser();
                         Toast.makeText(userRegister.this, "Adicionado com sucesso", Toast.LENGTH_LONG).show();
-                        Intent x= new Intent(getApplicationContext(),login.class);
+                        Intent x = new Intent(getApplicationContext(), login.class);
                         startActivity(x);
-
+                    }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }else{
                     Toast.makeText(userRegister.this, "As passwords que introduziu não são iguais", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +109,6 @@ public class userRegister extends AppCompatActivity {
             }
         });
 
-    }
+
 
 }

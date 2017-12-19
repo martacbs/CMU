@@ -65,7 +65,8 @@ public class login extends AppCompatActivity {
                     user.setUsername(c.getString(5));
                     user.setPassword(c.getString(6));
 
-                }} catch (Exception e) {
+                }
+            } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "NAO DA", Toast.LENGTH_SHORT).show();
             }finally {
                 if (c != null) {

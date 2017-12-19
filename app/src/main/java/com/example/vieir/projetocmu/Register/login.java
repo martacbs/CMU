@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.vieir.projetocmu.Database.DbHelper;
 import com.example.vieir.projetocmu.Interests.userInterests;
-import com.example.vieir.projetocmu.Database.DbHelper;
+
+import com.example.vieir.projetocmu.Models.User;
 import com.example.vieir.projetocmu.R;
 
 public class login extends AppCompatActivity {
@@ -34,31 +34,45 @@ public class login extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put("username", user.getText().toString());
                 values.put("password", pass.getText().toString());
-                verificarUser();
+                User user = verificarUser();
+
+                if (user != null) {
+                    Toast.makeText(getApplicationContext(), "login sucessful", Toast.LENGTH_SHORT).show();
+                    Intent d = new Intent(getApplicationContext(), userInterests.class);
+                    startActivity(d);
+                }
 
             }
         });
 
     }
 
-        private void verificarUser() {
+        private User verificarUser() {
             DbHelper dbHelper = new DbHelper(login.this);
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
             String username = user.getText().toString();
             String password = pass.getText().toString();
-            String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
-             try {
-                 Cursor c = db.rawQuery(sql, null);
-                 if (c != null) {
-                    if (c.getCount() > 0) {
-                        c.moveToNext();
-                        Toast.makeText(getApplicationContext(), "login sucessful", Toast.LENGTH_SHORT).show();
-                        Intent d=new Intent(getApplicationContext(),userInterests.class);
-                        startActivity(d);
-                    }
-                    }
-            } catch (Exception e) {
+
+            String query = "SELECT * FROM user WHERE username=? AND password=? ";
+            Cursor c = db.rawQuery(query, new String[]{username,password});
+
+            User user = null;
+
+            try {
+                if (c != null && c.moveToFirst()) {
+
+                    user = new User();
+                    user.setUsername(c.getString(5));
+                    user.setPassword(c.getString(6));
+
+                }} catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "NAO DA", Toast.LENGTH_SHORT).show();
-            }
+            }finally {
+                if (c != null) {
+                    c.close();
+                }
+             }
+
+             return user;
         }
 }

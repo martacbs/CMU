@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.vieir.projetocmu.Register.userRegister">
+    tools:context="com.example.vieir.projetocmu.register.UserRegister">
 
 
     <EditText

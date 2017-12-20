@@ -1,8 +1,4 @@
-package com.example.vieir.projetocmu.Models;
-
-import com.example.vieir.projetocmu.Database.DbHelper;
-
-import java.util.ArrayList;
+package com.example.vieir.projetocmu.models;
 
 /**
  * Created by martasantos on 15/12/17.

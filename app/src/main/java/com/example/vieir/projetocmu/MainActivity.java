@@ -1,14 +1,13 @@
 package com.example.vieir.projetocmu;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.vieir.projetocmu.Register.login;
-import com.example.vieir.projetocmu.Register.userRegister;
+import com.example.vieir.projetocmu.register.Login;
+import com.example.vieir.projetocmu.register.UserRegister;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent x= new Intent(getApplicationContext(),userRegister.class);
+                Intent x= new Intent(getApplicationContext(),UserRegister.class);
                 startActivity(x);
             }
         });
@@ -34,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent y=new Intent(getApplicationContext(),login.class);
+                Intent y=new Intent(getApplicationContext(),Login.class);
                 startActivity(y);
             }
         });
     }
+
 
 
 }

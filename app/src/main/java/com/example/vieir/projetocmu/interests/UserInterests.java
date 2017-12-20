@@ -1,11 +1,11 @@
-package com.example.vieir.projetocmu.Interests;
+package com.example.vieir.projetocmu.interests;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.vieir.projetocmu.R;
 
-public class userInterests extends AppCompatActivity {
+public class UserInterests extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

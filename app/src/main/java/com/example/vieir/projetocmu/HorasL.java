@@ -14,14 +14,14 @@ import com.example.vieir.projetocmu.models.Horas;
 
 import java.util.ArrayList;
 
-public class ListaHoras extends AppCompatActivity {
+public class HorasL extends AppCompatActivity {
 
     ArrayList<Horas> horas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_lista_horas);
 
         RecyclerView rvHoras =(RecyclerView) findViewById(R.id.rvHoras);
 

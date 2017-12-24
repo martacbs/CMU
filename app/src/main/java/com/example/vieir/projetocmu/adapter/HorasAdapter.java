@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.vieir.projetocmu.CriarEvento;
-import com.example.vieir.projetocmu.ListaHoras;
 import com.example.vieir.projetocmu.R;
 import com.example.vieir.projetocmu.models.Horas;
 

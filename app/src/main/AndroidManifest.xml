@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".register.UserRegister" />
-        <activity android:name=".register.login" />
+        <activity android:name=".register.Login" />
         <activity android:name=".interests.UserInterests" />
         <activity android:name=".MainActivity" />
         <activity android:name=".CriarEvento" />
         <activity
-            android:name=".ListaHoras"
+            android:name=".HorasL"
             android:label="@string/title_activity_lista_horas"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

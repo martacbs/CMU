@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
-import com.example.vieir.projetocmu.CriarEvento;
-import com.example.vieir.projetocmu.ListaHoras;
+import com.example.vieir.projetocmu.HorasL;
 import com.example.vieir.projetocmu.R;
 
 public class Calendar extends AppCompatActivity {
@@ -27,7 +26,7 @@ public class Calendar extends AppCompatActivity {
         @Override
         public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
 
-            Intent j = new Intent(getApplicationContext(), ListaHoras.class);
+            Intent j = new Intent(getApplicationContext(), HorasL.class);
             startActivity(j);
 
         }

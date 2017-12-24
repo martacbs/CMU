@@ -19,8 +19,12 @@
         <activity android:name=".register.UserRegister" />
         <activity android:name=".register.login" />
         <activity android:name=".interests.UserInterests" />
-
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".CriarEvento" />
+        <activity
+            android:name=".ListaHoras"
+            android:label="@string/title_activity_lista_horas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

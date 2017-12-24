@@ -70,7 +70,7 @@ public class UserRegister extends AppCompatActivity {
                     Toast.makeText(UserRegister.this, "Tem que confirmar a password", Toast.LENGTH_LONG).show();
                 }else if (password.getText().toString().equals(confirmarPassword.getText().toString())) {
                              Toast.makeText(getApplicationContext(), "register sucessful", Toast.LENGTH_SHORT).show();
-                             Intent d = new Intent(getApplicationContext(), login.class);
+                             Intent d = new Intent(getApplicationContext(), Login.class);
                              startActivity(d);
 
                 } else {
@@ -82,7 +82,7 @@ public class UserRegister extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent x = new Intent(getApplicationContext(), login.class);
+                Intent x = new Intent(getApplicationContext(), Login.class);
                 startActivity(x);
             }
         });

@@ -1,10 +1,13 @@
 package com.example.vieir.projetocmu.calendar;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
+import com.example.vieir.projetocmu.CriarEvento;
+import com.example.vieir.projetocmu.ListaHoras;
 import com.example.vieir.projetocmu.R;
 
 public class Calendar extends AppCompatActivity {
@@ -24,7 +27,8 @@ public class Calendar extends AppCompatActivity {
         @Override
         public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
 
-
+            Intent j = new Intent(getApplicationContext(), ListaHoras.class);
+            startActivity(j);
 
         }
     });
